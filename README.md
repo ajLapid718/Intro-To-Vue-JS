@@ -1,6 +1,6 @@
 This is a README file.
 
-1. The Vue Instance []
+1. The Vue Instance [x]
 2. Attribute Binding []
 3. Conditional Rendering []
 4. List Rendering []
