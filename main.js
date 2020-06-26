@@ -3,6 +3,7 @@ const app = new Vue({
   data: {
     product: "Socks",
     description: "One can never have enough of these.",
-    image: "./assets/vmSocks-green.jpg"
+    image: "./assets/vmSocks-green.jpg",
+    link: "https://www.google.com/"
   }
 });
