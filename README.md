@@ -11,3 +11,6 @@ This is a README file.
 9. Communicating Events []
 10. Forms []
 11. Tabs []
+
+- Install "Vue.js devtools", which is offered by https://vuejs.org, on Google Chrome
+- Make sure the "Allow access to file URLs" is enabled
