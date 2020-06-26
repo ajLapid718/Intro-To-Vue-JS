@@ -30,3 +30,13 @@ This is a README file.
   - You can use it to perform and chain operations to your value.
 
 - Anywhere that relies on our instance's data will update accordingly, which demonstrates Vue's nature of reactivity and the reactivity system.
+
+## Attribute Binding
+
+- Data can be bound to HTML attributes.
+
+- Syntax is v-bind: or : for short.
+
+- The attribute name that comes after the : specifies the attribute we’re binding data to.
+
+- Inside the attribute’s quotes, we reference the data we’re binding to.
