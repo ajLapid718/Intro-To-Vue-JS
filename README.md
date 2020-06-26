@@ -14,3 +14,19 @@ This is a README file.
 
 - Install "Vue.js devtools", which is offered by https://vuejs.org, on Google Chrome
 - Make sure the "Allow access to file URLs" is enabled
+
+## The Vue Instance
+
+- The Vue instance is the root of a Vue application, it is like a heart that powers everything.
+
+- The options object passed to the instance of view can handle data as well as actions.
+
+- We include in the options object specifically where to inject or plug into the application.
+
+- An expression can be used to evaluate or produce a value.
+  - You can use it to add characters to your value.
+  - You can use it to combine values.
+  - You can use it to perform conditional logic.
+  - You can use it to perform and chain operations to your value.
+
+- Anywhere that relies on our instance's data will update accordingly, which demonstrates Vue's nature of reactivity and the reactivity system.
