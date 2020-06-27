@@ -5,6 +5,7 @@ const app = new Vue({
     description: "One can never have enough of these.",
     image: "./assets/vmSocks-green.jpg",
     link: "https://www.google.com/",
-    inStock: false
+    inStock: false,
+    onSale: true
   }
 });
