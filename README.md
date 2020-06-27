@@ -2,7 +2,7 @@ This is a README file.
 
 1. The Vue Instance [x]
 2. Attribute Binding [x]
-3. Conditional Rendering []
+3. Conditional Rendering [x]
 4. List Rendering []
 5. Event Handling []
 6. Class & Style Binding []
@@ -48,7 +48,7 @@ This is a README file.
   - v-else-if
   - v-else
   - v-show
-  
+
 - If whatever is inside the directive’s quotes is truthy, the element will display.
 
 - You can use expressions inside the directive’s quotes.
