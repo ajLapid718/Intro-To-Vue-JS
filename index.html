@@ -24,12 +24,18 @@
           <!-- <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out!</p>
           <p v-else>Out of Stock</p> -->
           <ul>
-            <li v-for="detail in details">{{ detail }}</li>
+            <li v-for="detail in details" v-bind:key="detail">{{ detail }}</li>
           </ul>
 
-          <div v-for="variant in variants" v-bind:key="variant.variantId">
+          <div v-for="variant in variants" v-bind:key="variant.variantId"> 
             <p>{{ variant.variantColor }}</p>
           </div>
+
+          <ul>
+            <li v-for="size in sizes" v-bind:key="size">{{ size }}</li>
+          </ul>
+
+          <!-- wherever you place the v-for directive, that will be the element that will be the element the loop will re-create -->
 
           <br>
           <br>
