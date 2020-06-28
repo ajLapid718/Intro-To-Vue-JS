@@ -1,4 +1,10 @@
 Vue.component("product", {
+  props: {
+    premium: {
+      type: Boolean,
+      required: true
+    }
+  },
   template: `<div class="product">
     <div class="product-image">
         <img v-bind:src="image">
