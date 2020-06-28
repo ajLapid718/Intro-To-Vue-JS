@@ -14,7 +14,7 @@ Vue.component("product", {
         <h1>{{ title }}</h1>
         <p>{{ description }}</p>
         <p>{{ sale }}</p>
-        <p>User is {{ premium }}</p>
+        <p>Shipping: {{ shipping }}</p>
         <p v-show="inStock">In Stock</p>
         <!-- <span v-if="onSale">On Sale!</span> -->
         <!-- <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out!</p> -->
@@ -97,6 +97,14 @@ Vue.component("product", {
       }
       else {
         return this.title + " " + "are not on sale!"
+      }
+    },
+    shipping: function () {
+      if (this.premium) {
+        return "Free"
+      }
+      else {
+        return "$2.99";
       }
     }
   }
