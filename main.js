@@ -2,6 +2,7 @@ const app = new Vue({
   el: "#app",
   data: {
     product: "Socks",
+    brand: "Vue Mastery",
     description: "One can never have enough of these.",
     image: "./assets/vmSocks-green.jpg",
     link: "https://www.google.com/",
