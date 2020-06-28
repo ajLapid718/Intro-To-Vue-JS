@@ -20,9 +20,9 @@
           <h1>{{ title }}</h1>
           <p>{{ description }}</p>
           <p v-show="inStock">In Stock</p>
-          <span v-if="onSale">On Sale!</span>
+          <!-- <span v-if="onSale">On Sale!</span> -->
           <!-- <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out!</p> -->
-          <p v-else v-bind:class="{ 'out-of-stock': !inStock }">Out of Stock</p>
+          <p v-show="!inStock" v-bind:class="{ 'out-of-stock': !inStock }">Out of Stock</p>
           <ul>
             <li v-for="detail in details" v-bind:key="detail">{{ detail }}</li>
           </ul>
