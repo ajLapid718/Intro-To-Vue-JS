@@ -37,9 +37,11 @@
 
           <!-- wherever you place the v-for directive, that will be the element that will be the element the loop will re-create -->
 
-          <button v-on:click="addToCart">Add To Cart</button>
-          <button @click="removeFromCart">Remove From Cart</button>
-          <button class="cart">Cart({{ cart }})</button>
+          <div class="buttons-container">
+            <button v-on:click="addToCart">Add To Cart</button>
+            <button @click="removeFromCart">Remove From Cart</button>
+            <button class="cart">Cart({{ cart }})</button>
+          </div>
 
           <br>
           <br>
