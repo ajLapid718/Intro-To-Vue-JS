@@ -7,11 +7,11 @@ const app = new Vue({
     selectedVariant: 0,
     // image: "./assets/vmSocks-green.jpg",
     link: "https://www.google.com/",
-    inStock: false,
+    // inStock: false,
     onSale: false,
     inventory: 0,
     details: ["80% cotton", "20% polyester", "Gender-neutral"],
-    variants: [{ variantId: 2234, variantColor: "green", variantImage: "./assets/vmSocks-green.jpg"}, { variantId: 2235, variantColor: "blue", variantImage: "./assets/vmSocks-blue.jpg"}],
+    variants: [{ variantId: 2234, variantColor: "green", variantImage: "./assets/vmSocks-green.jpg", variantQuantity: 100}, { variantId: 2235, variantColor: "blue", variantImage: "./assets/vmSocks-blue.jpg", variantQuantity: 0}],
     sizes: ["Small", "Medium", "Large"],
     cart: 0
   },
@@ -32,7 +32,10 @@ const app = new Vue({
       return this.brand + " " + this.product;
     },
     image: function () {
-      return this.variants[this.selectedVariant].variantImage
+      return this.variants[this.selectedVariant].variantImage;
+    },
+    inStock: function () {
+      return this.variants[this.selectedVariant].variantQuantity;
     }
   }
 });
