@@ -11,5 +11,10 @@ const app = new Vue({
     variants: [{ variantId: 2234, variantColor: "green"}, { variantId: 2235, variantColor: "blue"}],
     sizes: ["Small", "Medium", "Large"],
     cart: 0
+  },
+  methods: {
+    addToCart: function () {
+      this.cart += 1;
+    }
   }
 });
