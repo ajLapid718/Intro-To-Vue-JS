@@ -1,3 +1,17 @@
+Vue.component("product-details", {
+  props: {
+    details: {
+      type: Array,
+      required: true
+    }
+  },
+  template: `
+    <ul>
+      <li v-for="detail in details" v-bind:key="detail">{{ detail }}</li>
+    </ul>
+  `
+})
+
 Vue.component("product", {
   props: {
     premium: {
@@ -19,9 +33,8 @@ Vue.component("product", {
         <!-- <span v-if="onSale">On Sale!</span> -->
         <!-- <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out!</p> -->
         <p v-show="!inStock" v-bind:class="{ 'out-of-stock': !inStock }">Out of Stock</p>
-        <ul>
-          <li v-for="detail in details" v-bind:key="detail">{{ detail }}</li>
-        </ul>
+
+        <product-details v-bind:details="details"></product-details>
 
         <div v-for="(variant, index) in variants" 
             v-bind:key="variant.variantId"
