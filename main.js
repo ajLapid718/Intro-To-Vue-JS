@@ -4,7 +4,8 @@ const app = new Vue({
     product: "Socks",
     brand: "Vue Mastery",
     description: "One can never have enough of these.",
-    image: "./assets/vmSocks-green.jpg",
+    selectedVariant: 0,
+    // image: "./assets/vmSocks-green.jpg",
     link: "https://www.google.com/",
     inStock: false,
     onSale: false,
@@ -18,8 +19,8 @@ const app = new Vue({
     addToCart: function () {
       this.cart += 1;
     },
-    updateProduct: function (variantImage) {
-      this.image = variantImage;
+    updateProduct: function (index) {
+      this.selectedVariant = index;
     },
     removeFromCart: function () {
       if (this.cart === 0) return;
@@ -29,6 +30,9 @@ const app = new Vue({
   computed: {
     title: function () {
       return this.brand + " " + this.product;
+    },
+    image: function () {
+      return this.variants[this.selectedVariant].variantImage
     }
   }
 });
