@@ -25,5 +25,10 @@ const app = new Vue({
       if (this.cart === 0) return;
       this.cart -= 1;
     }
+  },
+  computed: {
+    title: function () {
+      return this.brand + " " + this.product;
+    }
   }
 });
