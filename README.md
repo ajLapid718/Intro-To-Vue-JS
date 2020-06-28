@@ -6,7 +6,7 @@ This is a README file.
 4. List Rendering [x]
 5. Event Handling [x]
 6. Class & Style Binding [x]
-7. Computed Properties []
+7. Computed Properties [x]
 8. Components []
 9. Communicating Events []
 10. Forms []
