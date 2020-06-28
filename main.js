@@ -18,6 +18,10 @@ const app = new Vue({
     },
     updateProduct: function (variantImage) {
       this.image = variantImage;
+    },
+    removeFromCart: function () {
+      if (this.cart === 0) return;
+      this.cart -= 1;
     }
   }
 });
