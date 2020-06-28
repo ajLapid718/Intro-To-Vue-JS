@@ -82,3 +82,8 @@ This is a README file.
 - Data can be bound to an element’s style attribute
 - Data can be bound to an element’s class
 - We can use expressions inside an element’s class binding to evaluate whether a class should appear or not
+
+## Computed Properties
+
+- Computed properties calculate a value rather than store a value.
+- Computed properties can use data from your app to calculate its values.
