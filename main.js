@@ -14,6 +14,7 @@ Vue.component("product", {
         <h1>{{ title }}</h1>
         <p>{{ description }}</p>
         <p>{{ sale }}</p>
+        <p>User is {{ premium }}</p>
         <p v-show="inStock">In Stock</p>
         <!-- <span v-if="onSale">On Sale!</span> -->
         <!-- <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out!</p> -->
