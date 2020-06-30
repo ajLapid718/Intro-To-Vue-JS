@@ -7,7 +7,7 @@ This is a README file.
 5. Event Handling [x]
 6. Class & Style Binding [x]
 7. Computed Properties [x]
-8. Components []
+8. Components [x]
 9. Communicating Events []
 10. Forms []
 11. Tabs []
