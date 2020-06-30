@@ -56,7 +56,7 @@ Vue.component("product", {
                   v-bind:class="{ disabledButton: !inStock }">
                   Add To cart
           </button>
-          <button class="product-button" @click="removeFromCart">Remove From Cart</button>
+          <button class="product-button" v-on:click="removeFromCart">Remove From Cart</button>
         </div>
 
         <br>
@@ -89,8 +89,7 @@ Vue.component("product", {
       this.selectedVariant = index;
     },
     removeFromCart: function () {
-      if (this.cart === 0) return;
-      this.cart -= 1;
+      this.$emit("purge-from-cart", this.variants[this.selectedVariant].variantId);
     }
   },
   computed: {
@@ -131,6 +130,9 @@ const app = new Vue({
   methods: {
     updateCart: function (id) {
       this.cart.push(id);
+    },
+    purgeFromCart: function (id) {
+      this.cart.splice(this.cart.lastIndexOf(id), 1);
     }
   }
 });
