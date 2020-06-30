@@ -50,13 +50,13 @@ Vue.component("product", {
         <!-- wherever you place the v-for directive, that will be the element that will be the element the loop will re-create -->
 
         <div class="buttons-container">
-          <button v-on:click="addToCart"
+          <button class="product-button"
+                  v-on:click="addToCart"
                   v-bind:disabled="!inStock"
                   v-bind:class="{ disabledButton: !inStock }">
                   Add To cart
           </button>
-          <button @click="removeFromCart">Remove From Cart</button>
-          <button class="cart">Cart({{ cart }})</button>
+          <button class="product-button" @click="removeFromCart">Remove From Cart</button>
         </div>
 
         <br>
