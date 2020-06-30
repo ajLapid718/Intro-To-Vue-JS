@@ -8,14 +8,11 @@
 </head>
 <body>
 
-  <div class="nav-bar">
-    <button class="cart">Cart({{ cart }})</button>
-  </div>
-
   <div id="app">
-    <product v-bind:premium="premium"></product>
-    <!-- <product></product>
-    <product></product> -->
+    <div class="nav-bar">
+      <button class="cart">Cart({{ cart }})</button>
+    </div>
+    <product v-bind:premium="premium" v-on:add-to-cart="updateCart"></product>
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
