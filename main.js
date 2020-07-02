@@ -1,3 +1,22 @@
+Vue.component("reviews", {
+  props: {
+    reviews: {
+      type: Array,
+      required: true
+    }
+  },
+
+  template: `
+    <ul>
+      <li v-for="review in reviews">
+        <p>{{ review.name }}</p>
+        <p>{{ review.review }}</p>
+        <p>{{ review.rating }}</p>
+      </li>
+    </ul>
+  `
+})
+
 Vue.component("product-review", {
   template: `
     <form v-on:submit.prevent="onSubmit">
@@ -105,6 +124,8 @@ Vue.component("product", {
           </button>
           <button class="product-button" v-on:click="removeFromCart">Remove From Cart</button>
         </div>
+
+        <reviews v-bind:reviews="reviews"></reviews>
 
         <p>
 
