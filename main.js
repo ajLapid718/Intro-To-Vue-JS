@@ -21,13 +21,13 @@ Vue.component("product-review", {
   template: `
     <form v-on:submit.prevent="onSubmit">
       <label for="name">Name:</label>
-      <input type="text" id="name" v-model="name" placeholder="Name"></input>
+      <input type="text" id="name" v-model="name" placeholder="Name" required></input>
 
       <label for="review">Review:</label>
-      <textarea id="review" v-model="review" placeholder="Review"></textarea>
+      <textarea id="review" v-model="review" placeholder="Review" required></textarea>
 
       <label for="rating">Rating:</label>
-      <select id="rating" v-model.number="rating">
+      <select id="rating" v-model.number="rating" required>
         <option value="5">5</option>
         <option value="4">4</option>
         <option value="3">3</option>
