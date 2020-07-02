@@ -20,9 +20,11 @@ Vue.component("reviews", {
 Vue.component("product-review", {
   template: `
     <div>
-      <ul>
-        <li v-if="hasError" v-for="error in errors">{{ error }}</li>
-      </ul>
+      <p v-if="hasError">
+        <ul>
+          <li v-for="error in errors">{{ error }}</li>
+        </ul>
+      </p>
 
       <form v-on:submit.prevent="onSubmit">
         <label for="name">Name:</label>
@@ -53,7 +55,7 @@ Vue.component("product-review", {
       rating: null,
       hasError: false,
       errors: {
-        nameMesssage: "",
+        nameMessage: "",
         reviewMessage: "",
         ratingMessage: "",
       },
@@ -75,16 +77,16 @@ Vue.component("product-review", {
         this.rating = null;
         this.hasError = false;
         this.errors = {
-          nameMesssage: "",
+          nameMessage: "",
           reviewMessage: "",
           ratingMessage: ""
         };
       } 
       else {
         this.hasError = true;
-        !this.name ? this.errors.nameMesssage = "Name is required." : delete this.errors.nameMesssage;
-        !this.review ? this.errors.reviewMesssage = "Review is required." : delete this.errors.reviewMesssage;
-        !this.rating ? this.errors.ratingMesssage = "Rating is required." : delete this.errors.ratingMesssage;
+        !this.name ? this.errors.nameMessage = "Name is required." : Vue.delete(this.errors, this.errors.nameMessage);
+        !this.review ? this.errors.reviewMessage = "Review is required." : Vue.delete(this.errors, this.errors.reviewMessage);
+        !this.rating ? this.errors.ratingMessage = "Rating is required." : Vue.delete(this.errors, this.errors.ratingMessage);
       }
     }
   }
