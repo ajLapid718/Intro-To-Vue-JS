@@ -8,7 +8,7 @@ This is a README file.
 6. Class & Style Binding [x]
 7. Computed Properties [x]
 8. Components [x]
-9. Communicating Events []
+9. Communicating Events [x]
 10. Forms []
 11. Tabs []
 
