@@ -1,6 +1,6 @@
 Vue.component("product-review", {
   template: `
-    <form v-on:submit.prevent="addReview">
+    <form v-on:submit.prevent="onSubmit">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" placeholder="Name"></input>
 
@@ -16,8 +16,7 @@ Vue.component("product-review", {
         <option value="1">1</option>
       </select>
 
-      <br>
-      <br>
+      <p>
 
       <button>Submit</button>
     </form>
@@ -85,13 +84,12 @@ Vue.component("product", {
           <button class="product-button" v-on:click="removeFromCart">Remove From Cart</button>
         </div>
 
-        <br>
-        <br>
+        <p>
 
         <product-review></product-review>
 
-        <br>
-        <br>
+        <p>
+
         <a v-bind:href="link">Click Here For More Information</a>
       </div>
   </div>`,
