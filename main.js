@@ -21,10 +21,12 @@ Vue.component("product-review", {
       <button>Submit</button>
     </form>
   `,
-  data: {
-    name: null,
-    review: null,
-    rating: null
+  data: function () {
+    return {
+      name: null,
+      review: null,
+      rating: null
+    }
   },
   methods: {
     onSubmit: function () {
