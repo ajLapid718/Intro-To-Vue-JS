@@ -1,3 +1,24 @@
+Vue.component("product-review", {
+  template: `
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Name"></input>
+
+      <label for="review">Review:</label>
+      <input type="textarea" id="review" name="review" placeholder="Review"></input>
+
+      <label for="rating">Rating:</label>
+      <select>
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+      </select>
+    </form>
+  `
+})
+
 Vue.component("product-details", {
   props: {
     details: {
@@ -58,6 +79,11 @@ Vue.component("product", {
           </button>
           <button class="product-button" v-on:click="removeFromCart">Remove From Cart</button>
         </div>
+
+        <br>
+        <br>
+
+        <product-review></product-review>
 
         <br>
         <br>
