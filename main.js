@@ -35,7 +35,7 @@ Vue.component("product-review", {
         <option value="1">1</option>
       </select>
 
-      <p>
+      <p></p>
 
       <button>Submit</button>
     </form>
@@ -127,11 +127,11 @@ Vue.component("product", {
 
         <reviews v-bind:reviews="reviews"></reviews>
 
-        <p>
+        <p></p>
 
         <product-review v-on:add-product-review="addProductReview"></product-review>
 
-        <p>
+        <p></p>
 
         <a v-bind:href="link">Click Here For More Information</a>
       </div>
