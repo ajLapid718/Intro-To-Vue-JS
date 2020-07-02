@@ -5,7 +5,7 @@ Vue.component("product-review", {
       <input type="text" id="name" name="name" placeholder="Name"></input>
 
       <label for="review">Review:</label>
-      <textarea type="text" id="review" name="review" placeholder="Review"></textarea>
+      <textarea id="review" name="review" placeholder="Review"></textarea>
 
       <label for="rating">Rating:</label>
       <select>
