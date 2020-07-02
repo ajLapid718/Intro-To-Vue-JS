@@ -1,11 +1,11 @@
 Vue.component("product-review", {
   template: `
-    <form>
+    <form v-on:submit.prevent="addReview">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" placeholder="Name"></input>
 
       <label for="review">Review:</label>
-      <input type="textarea" id="review" name="review" placeholder="Review"></input>
+      <textarea type="text" id="review" name="review" placeholder="Review"></textarea>
 
       <label for="rating">Rating:</label>
       <select>
@@ -15,6 +15,11 @@ Vue.component("product-review", {
         <option value="2">2</option>
         <option value="1">1</option>
       </select>
+
+      <br>
+      <br>
+
+      <button>Submit</button>
     </form>
   `
 })
