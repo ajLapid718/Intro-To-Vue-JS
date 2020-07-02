@@ -104,7 +104,8 @@ Vue.component("product", {
       details: ["80% cotton", "20% polyester", "Gender-neutral"],
       variants: [{ variantId: 2234, variantColor: "green", variantImage: "./assets/vmSocks-green.jpg", variantQuantity: 100}, { variantId: 2235, variantColor: "blue", variantImage: "./assets/vmSocks-blue.jpg", variantQuantity: 0}],
       sizes: ["Small", "Medium", "Large"],
-      onSale: true
+      onSale: true,
+      reviews: []
     }
   },
   methods: {
