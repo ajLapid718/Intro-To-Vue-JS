@@ -106,7 +106,7 @@ Vue.component("product", {
 
         <p>
 
-        <product-review></product-review>
+        <product-review v-on:add-product-review="addProductReview"></product-review>
 
         <p>
 
@@ -140,6 +140,9 @@ Vue.component("product", {
     },
     removeFromCart: function () {
       this.$emit("purge-from-cart", this.variants[this.selectedVariant].variantId);
+    },
+    addProductReview: function (productReview) {
+      this.reviews.push(productReview);
     }
   },
   computed: {
