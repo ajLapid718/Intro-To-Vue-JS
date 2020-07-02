@@ -12,7 +12,8 @@ Vue.component("reviews", {
         <p>{{ review.name }}</p>
         <p>{{ review.review }}</p>
         <p>{{ review.rating }}</p>
-      </li>
+        <p>{{ review.recommendation }}</p>
+        </li>
     </ul>
   `,
 });
@@ -42,6 +43,11 @@ Vue.component("product-review", {
           <option value="1">1</option>
         </select>
 
+        <input type="radio" id="recommendation" v-model="recommendation" value="Yes"></input>
+        <label for="yes">Yes</label>
+        <input type="radio" id="recommendation" v-model="recommendation" value="No"></input>
+        <label for="no">No</label>
+
         <p></p>
 
         <button>Submit</button>
@@ -53,12 +59,9 @@ Vue.component("product-review", {
       name: null,
       review: null,
       rating: null,
+      recommendation: null,
       hasError: false,
-      errors: {
-        nameMessage: "",
-        reviewMessage: "",
-        ratingMessage: "",
-      },
+      errors: {},
     };
   },
   methods: {
@@ -68,6 +71,7 @@ Vue.component("product-review", {
           name: this.name,
           review: this.review,
           rating: this.rating,
+          recommendation: this.recommendation
         };
 
         this.$emit("add-product-review", productReview);
@@ -75,18 +79,17 @@ Vue.component("product-review", {
         this.name = null;
         this.review = null;
         this.rating = null;
+        this.recommendation = null;
         this.hasError = false;
-        this.errors = {
-          nameMessage: "",
-          reviewMessage: "",
-          ratingMessage: ""
-        };
+        this.errors = {};
       } 
       else {
         this.hasError = true;
-        !this.name ? this.errors.nameMessage = "Name is required." : Vue.delete(this.errors, this.errors.nameMessage);
-        !this.review ? this.errors.reviewMessage = "Review is required." : Vue.delete(this.errors, this.errors.reviewMessage);
-        !this.rating ? this.errors.ratingMessage = "Rating is required." : Vue.delete(this.errors, this.errors.ratingMessage);
+        this.errors = {};
+        if (!this.name) this.errors.nameMessage = "Name is required.";
+        if (!this.review) this.errors.reviewMessage = "Review is required.";
+        if (!this.rating) this.errors.ratingMessage = "Rating is required.";
+        if (!this.recommendation) this.errors.recommendationMessage = "Recommendation is required.";
       }
     }
   }
