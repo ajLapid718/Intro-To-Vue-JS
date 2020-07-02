@@ -2,8 +2,8 @@ Vue.component("reviews", {
   props: {
     reviews: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
 
   template: `
@@ -14,76 +14,102 @@ Vue.component("reviews", {
         <p>{{ review.rating }}</p>
       </li>
     </ul>
-  `
-})
+  `,
+});
 
 Vue.component("product-review", {
   template: `
-    <form v-on:submit.prevent="onSubmit">
-      <label for="name">Name:</label>
-      <input type="text" id="name" v-model="name" placeholder="Name" required></input>
+    <div>
+      <ul>
+        <li v-if="hasError" v-for="error in errors">{{ error }}</li>
+      </ul>
 
-      <label for="review">Review:</label>
-      <textarea id="review" v-model="review" placeholder="Review" required></textarea>
+      <form v-on:submit.prevent="onSubmit">
+        <label for="name">Name:</label>
+        <input type="text" id="name" v-model="name" placeholder="Name"></input>
 
-      <label for="rating">Rating:</label>
-      <select id="rating" v-model.number="rating" required>
-        <option value="5">5</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
-      </select>
+        <label for="review">Review:</label>
+        <textarea id="review" v-model="review" placeholder="Review"></textarea>
 
-      <p></p>
+        <label for="rating">Rating:</label>
+        <select id="rating" v-model.number="rating">
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+        </select>
 
-      <button>Submit</button>
-    </form>
+        <p></p>
+
+        <button>Submit</button>
+      </form>
+    </div>
   `,
   data: function () {
     return {
       name: null,
       review: null,
-      rating: null
-    }
+      rating: null,
+      hasError: false,
+      errors: {
+        nameMesssage: "",
+        reviewMessage: "",
+        ratingMessage: "",
+      },
+    };
   },
   methods: {
     onSubmit: function () {
-      const productReview = {
-        name: this.name,
-        review: this.review,
-        rating: this.rating
+      if (this.name && this.review && this.rating) {
+        const productReview = {
+          name: this.name,
+          review: this.review,
+          rating: this.rating,
+        };
+
+        this.$emit("add-product-review", productReview);
+
+        this.name = null;
+        this.review = null;
+        this.rating = null;
+        this.hasError = false;
+        this.errors = {
+          nameMesssage: "",
+          reviewMessage: "",
+          ratingMessage: ""
+        };
+      } 
+      else {
+        this.hasError = true;
+        !this.name ? this.errors.nameMesssage = "Name is required." : delete this.errors.nameMesssage;
+        !this.review ? this.errors.reviewMesssage = "Review is required." : delete this.errors.reviewMesssage;
+        !this.rating ? this.errors.ratingMesssage = "Rating is required." : delete this.errors.ratingMesssage;
       }
-
-      this.$emit("add-product-review", productReview);
-
-      this.name = null;
-      this.review = null;
-      this.rating = null;
     }
   }
-})
+});
 
 Vue.component("product-details", {
   props: {
     details: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   template: `
     <ul>
       <li v-for="detail in details" v-bind:key="detail">{{ detail }}</li>
     </ul>
-  `
-})
+  `,
+});
 
 Vue.component("product", {
   props: {
     premium: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   template: `<div class="product">
     <div class="product-image">
@@ -148,11 +174,24 @@ Vue.component("product", {
       // onSale: false,
       // inventory: 0,
       details: ["80% cotton", "20% polyester", "Gender-neutral"],
-      variants: [{ variantId: 2234, variantColor: "green", variantImage: "./assets/vmSocks-green.jpg", variantQuantity: 100}, { variantId: 2235, variantColor: "blue", variantImage: "./assets/vmSocks-blue.jpg", variantQuantity: 0}],
+      variants: [
+        {
+          variantId: 2234,
+          variantColor: "green",
+          variantImage: "./assets/vmSocks-green.jpg",
+          variantQuantity: 100,
+        },
+        {
+          variantId: 2235,
+          variantColor: "blue",
+          variantImage: "./assets/vmSocks-blue.jpg",
+          variantQuantity: 0,
+        },
+      ],
       sizes: ["Small", "Medium", "Large"],
       onSale: true,
-      reviews: []
-    }
+      reviews: [],
+    };
   },
   methods: {
     addToCart: function () {
@@ -162,11 +201,14 @@ Vue.component("product", {
       this.selectedVariant = index;
     },
     removeFromCart: function () {
-      this.$emit("purge-from-cart", this.variants[this.selectedVariant].variantId);
+      this.$emit(
+        "purge-from-cart",
+        this.variants[this.selectedVariant].variantId
+      );
     },
     addProductReview: function (productReview) {
       this.reviews.push(productReview);
-    }
+    },
   },
   computed: {
     title: function () {
@@ -178,30 +220,28 @@ Vue.component("product", {
     inStock: function () {
       return this.variants[this.selectedVariant].variantQuantity;
     },
-    sale: function() {
+    sale: function () {
       if (this.onSale) {
         return this.title + " " + "are on sale!";
-      }
-      else {
-        return this.title + " " + "are not on sale!"
+      } else {
+        return this.title + " " + "are not on sale!";
       }
     },
     shipping: function () {
       if (this.premium) {
-        return "Free"
-      }
-      else {
+        return "Free";
+      } else {
         return "$2.99";
       }
-    }
-  }
-})
+    },
+  },
+});
 
 const app = new Vue({
   el: "#app",
   data: {
     premium: true,
-    cart: []
+    cart: [],
   },
   methods: {
     updateCart: function (id) {
@@ -209,6 +249,6 @@ const app = new Vue({
     },
     purgeFromCart: function (id) {
       this.cart.splice(this.cart.lastIndexOf(id), 1);
-    }
-  }
+    },
+  },
 });
