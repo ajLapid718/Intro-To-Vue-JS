@@ -20,7 +20,15 @@ Vue.component("product-review", {
 
       <button>Submit</button>
     </form>
-  `
+  `,
+  data: {
+    name: null,
+    review: null,
+    rating: null
+  },
+  methods: {
+
+  }
 })
 
 Vue.component("product-details", {
